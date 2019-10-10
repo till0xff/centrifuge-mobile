@@ -6,7 +6,7 @@ import (
 
 // Publication ...
 type Publication struct {
-	Seq  uint32
+	Seq  int32
 	UID  string
 	Data []byte
 	Info *ClientInfo
@@ -72,7 +72,7 @@ func (d *HistoryData) ItemAt(i int) *Publication {
 		info.ChanInfo = pub.Info.ChanInfo
 	}
 	return &Publication{
-		Seq: pub.Seq,
+		Seq: int32(pub.Seq),
 		UID:  pub.UID,
 		Data: pub.Data,
 		Info: info,

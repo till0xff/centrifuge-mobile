@@ -213,7 +213,7 @@ type JoinEvent struct {
 
 // PublishEvent has info about received channel Publication.
 type PublishEvent struct {
-	Seq  uint32
+	Seq  int32
 	UID  string
 	Data []byte
 	Info *ClientInfo
@@ -280,7 +280,7 @@ type subEventProxy struct {
 func (p *subEventProxy) OnPublish(s *gocentrifuge.Subscription, e gocentrifuge.PublishEvent) {
 	fmt.Printf("%#v\n", p)
 	pub := Publication{
-		Seq: e.Seq,
+		Seq: int32(e.Seq),
 		UID:  e.UID,
 		Data: e.Data,
 	}
@@ -294,7 +294,7 @@ func (p *subEventProxy) OnPublish(s *gocentrifuge.Subscription, e gocentrifuge.P
 	}
 
 	event := &PublishEvent{
-		Seq: e.Seq,
+		Seq: int32(e.Seq),
 		UID:  e.UID,
 		Data: e.Data,
 	}
